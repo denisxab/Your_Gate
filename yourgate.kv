@@ -1,0 +1,680 @@
+#:import hex kivy.utils.get_color_from_hex
+
+
+#:set  Color_Background hex("#252B31")
+#:set  Color_Content hex("#424246")
+#:set Color_Text hex("#C5C5D1")
+#:set Color_Text_Hide hex("#707070")
+#:set  Color_border hex("#C5C5D1")
+#:set  border_round [2,2,2,2]
+#:set  Color_Black hex("#000000")
+
+#
+<Main_TextInput@TextInput>:
+    hint_text_color: Color_Text_Hide
+    foreground_color:Color_Text
+    background_color: 0,0,0,0
+#
+<Main_Button_Translate@Button>:
+    color:Color_Text
+    background_color: 0,0,0,0
+#
+<M_Label@Label>:
+    background_color: 0,0,0,0
+    color:Color_Text
+#
+<My_Button@Button>:
+    background_color: 0,0,0,0
+    color:Color_Text
+#
+<Head@AnchorLayout>:
+    # HEAD
+    anchor_y:"center"
+    anchor_x:"right"
+    size_hint_y:0.08
+    padding: [0,10,20,10]
+    canvas:
+        Color:
+            rgba: Color_Content
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    ToggleButton:
+        size_hint_x:0.06
+        size_hint_y:0.5
+        background_down:'./ico/menu.png'
+        background_normal:'./ico/menu.png'
+        border:(1, 1, 1, 1)
+        on_state: app.layout.Menu_Main(self)
+
+#
+<Bolvanka@Widget>:
+    size_hint_y:0.3
+    height:'0'
+#
+<PAGE@BoxLayout>:
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: Color_Background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+#
+<Bodu@BoxLayout>:
+    padding: [10,16,10,10]
+    orientation:"vertical"
+    size_hint_y:0.7
+    spacing: 16
+#
+<Box_TextInput@BoxLayout>:
+    canvas.before:
+        Color:
+            # Фон TextInput
+            rgba: Color_Content
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [6,]
+#
+<Box_Button@AnchorLayout>:
+    padding: border_round
+    # Толщина обводки
+    canvas.before:
+        Color:
+            # Цвет обводки
+            rgba: Color_border
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [6,]
+
+    AnchorLayout:
+        canvas.before:
+            Color:
+                # Фон TextInput
+                rgba: Color_Content
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [6,]
+#
+<Box_Label@AnchorLayout>:
+    # Толщина обводки
+    padding: border_round
+    canvas.before:
+        Color:
+            # Цвет обводки
+            rgba: Color_border
+        RoundedRectangle:
+            pos: root.pos
+            size: root.size
+            radius: [6,]
+
+    AnchorLayout:
+        canvas.before:
+            Color:
+                # Фон TextInput
+                rgba: Color_Background
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [6,]
+#
+<Menu@BoxLayout>:
+    orientation: "vertical"
+    padding: [15,10,15,10]
+    spacing:10
+    size_hint_y:None
+    height:'0'
+    opacity:0
+    canvas.before:
+        Color:
+            rgba: Color_Content
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    AnchorLayout:
+        size_hint_y:0.5
+
+        # Кнопка перевода на Ascii
+        BoxLayout:
+
+            # Толщина обводки
+            padding: border_round
+            canvas.before:
+                Color:
+                    # Цвет обводки
+                    rgba: Color_border
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [6,]
+
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        # Фон TextInput
+                        rgba: Color_Content
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [6,]
+
+                Main_Button_Translate:
+                    text:"CDC-21"
+                    background_color: 0,0,0,0
+                    on_release: app.layout.Swap_Main()
+
+
+
+    GridLayout:
+        spacing:10
+
+        cols:2
+        # Кнопка перевода на Ascii
+        BoxLayout:
+
+            # Толщина обводки
+            padding: border_round
+            canvas.before:
+                Color:
+                    # Цвет обводки
+                    rgba: Color_border
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [6,]
+
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        # Фон TextInput
+                        rgba: Color_Content
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [6,]
+
+                Main_Button_Translate:
+                    text:"Создать ключ"
+                    background_color: 0,0,0,0
+                    on_release: app.layout.Swap_Create_Public_Key()
+
+        # Кнопка перевода на Ascii
+        BoxLayout:
+
+            # Толщина обводки
+            padding: border_round
+            canvas.before:
+                Color:
+                    # Цвет обводки
+                    rgba: Color_border
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [6,]
+
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        # Фон TextInput
+                        rgba: Color_Content
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [6,]
+
+                Main_Button_Translate:
+                    text:"Управление ключами"
+                    background_color: 0,0,0,0
+                    on_release: app.layout.Swap_Manage_Key()
+
+
+        # Кнопка перевода на Ascii
+        BoxLayout:
+
+            # Толщина обводки
+            padding: border_round
+            canvas.before:
+                Color:
+                    # Цвет обводки
+                    rgba: Color_border
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [6,]
+
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        # Фон TextInput
+                        rgba: Color_Content
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [6,]
+
+                Main_Button_Translate:
+                    text:"Получить ключ"
+                    background_color: 0,0,0,0
+                    on_release: app.layout.Swap_Get_Key()
+
+        # Кнопка перевода на Ascii
+        BoxLayout:
+
+            # Толщина обводки
+            padding: border_round
+            canvas.before:
+                Color:
+                    # Цвет обводки
+                    rgba: Color_border
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [6,]
+
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        # Фон TextInput
+                        rgba: Color_Content
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [6,]
+
+                Main_Button_Translate:
+                    text:"Информация"
+                    background_color: 0,0,0,0
+                    on_release: app.layout.Swap_Info()
+
+
+
+#
+<Container>:
+
+    ###################
+
+
+    text_input_main:text_input_main0
+    text_input_main_cdc:text_input_main_cdc0
+
+
+
+    button_create_public_key: button_create_public_key0
+    label_text_input_public_key: label_text_input_public_key0
+    button_write_response_key:button_write_response_key0
+    text_input_response_key:text_input_response_key0
+    label_key_create:label_key_create0
+
+
+
+    button_write_public_key: button_write_public_key0
+    text_input_public_key:text_input_public_key0
+    label_text_input_response_key:label_text_input_response_key0
+    label_key_get:label_key_get0
+
+
+
+
+    label_info_key:label_info_key0
+
+    ##########################################
+    main_menu:main_menu0
+    menu_create_key:menu_create_key0
+    menu_get_key:menu_get_key0
+    menu_info:menu_info0
+    menu_manage_key:menu_manage_key0
+    #
+    bolvanka_main:bolvanka_main0
+    bolvanka_create_key:bolvanka_create_key0
+    bolvanka_get_key:bolvanka_get_key0
+    bolvanka_info:bolvanka_info0
+    bolvanka_manage_key:bolvanka_manage_key0
+    ##########################################
+
+    text_left:text_left0
+    text_right:text_right0
+
+    right_swap_node:right_swap_node0
+    label_swap_node:label_swap_node0
+    left_swap_node:left_swap_node0
+
+    box_manage_key:box_manage_key0
+
+    text_input_add_key:text_input_add_key0
+    text_input_add_notes:text_input_add_notes0
+    # ###################
+    id:rooot
+    #
+    border:0
+    #!!
+    page:0
+    anim_kwargs:{'d': .03, 't': 'in_quad'}
+
+
+
+    # PAGE 0 Главная страница
+    PAGE:
+        # HEAD
+        Head:
+        # BODU
+        Bodu:
+            id:bodu_main0
+            BoxLayout:
+                orientation: "vertical"
+                spacing: 6
+
+                # Текстовое поля ввода 1
+                Box_TextInput:
+                    size_hint_y:1
+                    Main_TextInput:
+                        id: text_input_main0
+                        background_color: 0,0,0,0
+                        hint_text: "Введите текст"
+
+                # Информация на главной странице
+                BoxLayout:
+                    size_hint_y:0.3
+                    padding: [0,10,0,10]
+                    spacing: 10
+
+                    # Кнопка перевода на CDC_21
+                    Box_Button:
+                        size_hint_x:0.2
+                        Main_Button_Translate:
+                            text:"\\/"
+                            on_release: root.Translate_cdc_21()
+
+                    # Примечания какой ключ выбран
+                    Box_Label:
+                        M_Label:
+                            id:label_info_key0
+                            text:'None'
+
+                    # Кнопка перевода на Ascii
+                    Box_Button:
+                        size_hint_x:0.2
+                        # Толщина обводки
+                        Main_Button_Translate:
+                            text:"/\\"
+                            on_release: root.Translate_ascii()
+
+                # Текстовое поля ввода 2
+                Box_TextInput:
+                    size_hint_y:1
+                    Main_TextInput:
+                        id: text_input_main_cdc0
+                        hint_text: "Введите текст"
+
+
+        # Болванка
+        Bolvanka:
+            id: bolvanka_main0
+        # Menu
+        Menu:
+            id: main_menu0
+
+
+    # PAGE 1 Создать ключ
+    PAGE:
+        # HEAD
+        Head:
+
+
+        # BODU
+        Bodu:
+            BoxLayout:
+                orientation:"vertical"
+                spacing: 10
+                size_hint_y:0.5
+
+                # Создать публичный ключ
+                Box_Button:
+                    # Толщина обводки
+                    My_Button:
+                        id:button_create_public_key0
+                        text: "Создать публичный ключ"
+                        on_release: root.Create_Public_Key()
+
+                # Публичный ключ
+                Box_Label:
+                    Main_TextInput:
+                        id:label_text_input_public_key0
+                        text: "---"
+                        multiline: False
+
+
+                # Кнопка записать ответный ключ
+                Box_Button:
+                    My_Button:
+                        id:button_write_response_key0
+                        text: "Записать ответный ключ"
+                        on_release: root.Write_Response_Key()
+
+                # Текстовое поле записать ответный ключ
+                Box_TextInput:
+                    Main_TextInput:
+                        id:text_input_response_key0
+                        hint_text: "---"
+                        multiline: False
+
+            Widget:
+                size_hint_y:0.4
+
+            # Ваш ключ
+            Box_Label:
+                size_hint_y:0.1
+                Main_TextInput:
+                    id:label_key_create0
+                    hint_text: "Ваш ключ:"
+                    multiline: False
+
+
+
+        # Болванка
+        Bolvanka:
+            id: bolvanka_create_key0
+        # Menu
+        Menu:
+            id: menu_create_key0
+
+
+    # PAGE 2 Получить ключ
+    PAGE:
+        # HEAD
+        Head:
+
+
+        # BODU
+        Bodu:
+
+            BoxLayout:
+                orientation:"vertical"
+                size_hint_y:0.37
+                spacing:10
+                # Кнопка записать публичный ключ
+                Box_Button:
+                    # Толщина обводки
+                    My_Button:
+                        id:button_write_public_key0
+                        text: "Записать  публичный ключ"
+                        on_release: root.Write_Public_Key_Create_Response_Key()
+
+                # Поле ввода публичный ключ
+                Box_TextInput:
+                    Main_TextInput:
+                        id:text_input_public_key0
+                        hint_text: "---"
+                        multiline: False
+
+                # Ответный ключ
+                Box_Label:
+                    Main_TextInput:
+                        id:label_text_input_response_key0
+                        background_color: 0,0,0,0
+                        hint_text: "Ответный ключ"
+                        multiline: False
+
+            Widget:
+                size_hint_y:0.53
+
+            # Ваш ключ
+            Box_Label:
+                size_hint_y:0.1
+                Main_TextInput:
+                    id:label_key_get0
+                    hint_text: "Ваш ключ:"
+                    multiline: False
+
+
+        # Болванка
+        Bolvanka:
+            id: bolvanka_get_key0
+        # Menu
+        Menu:
+            id: menu_get_key0
+        #
+
+
+    # PAGE 3 Информация
+    PAGE:
+        # HEAD
+        Head:
+
+
+        # BODU
+        Bodu:
+            Box_Label:
+                Label:
+                    text:"----"
+        # Болванка
+        Bolvanka:
+            id: bolvanka_info0
+        # Menu
+        Menu:
+            id: menu_info0
+
+
+    # PAGE 4 Управление ключами
+    PAGE:
+        # HEAD
+        Head:
+            AnchorLayout:
+                padding: [20,0,0,0]
+                anchor_y:"center"
+                anchor_x:"left"
+
+                BoxLayout:
+                    size_hint_x:0.2
+                    spacing:10
+
+
+
+                    Button:
+                        size_hint_x:0.06
+                        size_hint_y:0.8
+                        background_normal:'./ico/refresh_t.png'
+                        background_down:'./ico/refresh.png'
+                        border:(1, 1, 1, 1)
+                        on_release: root.Manage_Key()
+
+                    Button:
+                        size_hint_x:0.06
+                        size_hint_y:0.8
+                        background_normal:'./ico/add.png'
+                        background_down:'./ico/go.png'
+                        border:(1, 1, 1, 1)
+                        on_release: root.Swap_Add_Key()
+        Bodu:
+            GridLayout:
+                cols:1
+
+                spacing: 6
+                id:box_manage_key0
+
+
+
+
+            BoxLayout:
+                size_hint_y:0.1
+                orientation: "horizontal"
+                padding:[20,10,20,0]
+                Box_Button:
+                    size_hint_x:0.2
+                    id:left_swap_node0
+                    height:'0'
+                    size_hint_y: None
+                    opacity: 0
+                    My_Button:
+                        text:"*"
+                        id:text_left0
+                        on_release: root.Swap_Left_List_Flag()
+
+                Box_Label:
+                    M_Label:
+                        id:label_swap_node0
+                        text:"None"
+
+                Box_Button:
+                    size_hint_x:0.2
+                    id:right_swap_node0
+                    height:'0'
+                    size_hint_y: None
+                    opacity: 0
+                    My_Button:
+                        text:"*"
+                        id:text_right0
+                        on_release: root.Swap_Right_List_Flag()
+        # Болванка
+        Bolvanka:
+            id: bolvanka_manage_key0
+        # Menu
+        Menu:
+            id: menu_manage_key0
+
+    # PAGE 5 Добавление ключами
+    PAGE:
+        AnchorLayout:
+            anchor_y:"center"
+            anchor_x:"right"
+            size_hint_y:0.08
+            padding: [0,10,20,10]
+            canvas:
+                Color:
+                    rgba: Color_Content
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Button:
+                size_hint_x:0.08
+                background_down:'./ico/add.png'
+                background_normal:'./ico/add.png'
+                border:(1, 1, 1, 1)
+                on_release: root.Add_Key()
+
+        Bodu:
+
+            BoxLayout:
+                size_hint_y:0.3
+                orientation:"vertical"
+                spacing:16
+                Box_Label:
+                    Main_TextInput:
+                        id: text_input_add_key0
+                        hint_text: "Введите ключ"
+                        multiline: False
+
+                Box_TextInput:
+                    Main_TextInput:
+                        id: text_input_add_notes0
+                        hint_text: "Введите примечание"
+                        multiline: False
+
+            Widget:
+                size_hint_y:0.7
+
+
+        Bolvanka:
